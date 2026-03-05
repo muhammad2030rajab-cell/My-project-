@@ -19,7 +19,7 @@ from database import (
     get_report_with_normal_ranges,
     add_new_lab, get_all_labs, delete_lab,
     get_db_connection,  # save_lab_details تم إزالتها
-    get_lab_details,
+    # get_lab_details تم إزالتها
     ensure_admin_lab_exists
 )
 
