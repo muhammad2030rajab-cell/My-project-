@@ -306,3 +306,22 @@ def get_report_with_normal_ranges(report_id):
         test['normal_range'] = get_normal_range(test['test_name'], report.get('gender', 'ذكر'))
     
     return report
+def save_lab_details(lab_id, details):
+    """
+    دالة لحفظ تفاصيل المختبر - مؤقتة لحل مشكلة الاستيراد
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        # هنا ضع الكود المناسب لحفظ التفاصيل
+        # هذا مجرد هيكل مؤقت
+        cursor.execute("""
+            UPDATE labs SET details = ? WHERE id = ?
+        """, (details, lab_id))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Error saving lab details: {e}")
+        return False
+    finally:
+        conn.close()
