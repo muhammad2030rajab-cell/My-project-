@@ -325,3 +325,36 @@ def save_lab_details(lab_id, details):
         return False
     finally:
         conn.close()
+def save_lab_details(lab_id, details):
+    """
+    حفظ تفاصيل المختبر
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""
+            UPDATE labs SET details = ? WHERE id = ?
+        """, (details, lab_id))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Error saving lab details: {e}")
+        return False
+    finally:
+        conn.close()
+
+def get_lab_details(lab_id):
+    """
+    استرجاع تفاصيل المختبر
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT details FROM labs WHERE id = ?", (lab_id,))
+        result = cursor.fetchone()
+        return result['details'] if result else None
+    except Exception as e:
+        print(f"Error getting lab details: {e}")
+        return None
+    finally:
+        conn.close()
