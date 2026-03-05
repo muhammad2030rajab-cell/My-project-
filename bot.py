@@ -15,9 +15,11 @@ from telegram.ext import (
 from database import (
     init_db, get_lab_by_user, verify_lab,
     add_lab_user, create_report, add_test_to_report,
-    get_report_details, get_report_with_normal_ranges,
+    get_report_details,
+    get_report_with_normal_ranges,
     add_new_lab, get_all_labs, delete_lab,
-    get_db_connection, save_lab_details, get_lab_details,
+    get_db_connection,  # save_lab_details تم إزالتها
+    get_lab_details,
     ensure_admin_lab_exists
 )
 
